@@ -1,7 +1,7 @@
 {
   "name": "universaldownloader",
-  "version": "1.8.1",
-  "description": "universalDownloader is an open-source API service that allows users to download media content from various platforms including YouTube, Spotify, Instagram, Facebook, Twitter, and more.",
+  "version": "1.9.0",
+  "description": "universalDownloader is an open-source API service that allows users to download media content from various platforms including YouTube, Spotify, Instagram, Facebook, Twitter, Google Drive, Mega, Pixiv, Bilibili, Sfile, SnackVideo and more.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -12,6 +12,7 @@
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "express": "^4.18.2",
     "metadownloader": "^1.0.0",
     "morgan": "^1.10.1",
