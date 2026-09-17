@@ -6,7 +6,7 @@
 [![Join our Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord&logoColor=white)](https://discord.gg/qG9cCvEtA3)
 
 A universal media downloader API built with Node.js and Express.  
-Download media from LinkedIn,Threads, Reddit, Facebook, Instagram, TikTok, YouTube, Pinterest, Twitter, Douyin and more — all in one easy-to-use API.
+Download media from LinkedIn, Threads, Reddit, Facebook, Instagram, TikTok, YouTube, Pinterest, Twitter, Douyin, Google Drive, Mega, Pixiv, Bilibili, Sfile, SnackVideo and more — all in one easy-to-use API.
 
 ---
 
@@ -25,15 +25,21 @@ Download media from LinkedIn,Threads, Reddit, Facebook, Instagram, TikTok, YouTu
 ## Features
 
 - Download media from popular platforms:
+  - Bilibili
   - Bluesky
   - CapCut
   - Dailymotion
   - Douyin
   - Facebook & Instagram ( meta )
+  - Google Drive
   - Kuaishou
   - LinkedIn
+  - Mega
   - Pinterest
+  - Pixiv
   - Reddit
+  - Sfile
+  - SnackVideo
   - Snapchat
   - Soundcloud
   - Spotify
@@ -94,15 +100,22 @@ Response:
 
 | Endpoint                    | Description                       | Method |
 | --------------------------- | --------------------------------- | ------ |
+| `/api/bilibili/download`    | Download Bilibili media           | GET    |
 | `/api/bluesky/download`     | Download Bluesky media            | GET    |
 | `/api/capcut/download`      | Download CapCut media             | GET    |
 | `/api/dailymotion/download` | Download Dailymotion media        | GET    |
 | `/api/douyin/download`      | Download Douyin media             | GET    |
+| `/api/gdrive/download`      | Download Google Drive file        | GET    |
 | `/api/kuaishou/download`    | Download Kuaishou media           | GET    |
 | `/api/linkedin/download`    | Download LinkedIn media           | GET    |
+| `/api/mega/download`        | Download Mega file                | GET    |
 | `/api/meta/download`        | Download Facebook/Instagram media | GET    |
 | `/api/pinterest/download`   | Download Pinterest media          | GET    |
+| `/api/pixiv/download`       | Download Pixiv artwork / ugoira   | GET    |
+| `/api/pixiv/user`           | List a Pixiv user's artwork ids   | GET    |
 | `/api/reddit/download`      | Download Reddit media             | GET    |
+| `/api/sfile/download`       | Download Sfile file               | GET    |
+| `/api/snack/download`       | Download SnackVideo media         | GET    |
 | `/api/snapchat/download`    | Download Snapchat media           | GET    |
 | `/api/soundcloud/download`  | Download Soundcloud media         | GET    |
 | `/api/spotify/download`     | Download Spotify media            | GET    |
@@ -114,6 +127,21 @@ Response:
 | `/api/youtube/download`     | Download YouTube media            | GET    |
 
 **~~See the full interactive API docs with Swagger at `/api-docs`.~~**
+
+### Optional query parameters
+
+| Endpoint                | Param    | Description                                                                 |
+| ----------------------- | -------- | --------------------------------------------------------------------------- |
+| `/api/pixiv/download`   | `cookie` | Pixiv `PHPSESSID` — required only for R-18 artworks                          |
+| `/api/pixiv/user`       | `cookie` | Pixiv `PHPSESSID` (login needed for the profile listing)                     |
+| `/api/pixiv/user`       | `type`   | `illusts` (default), `manga` or `novels`                                     |
+| `/api/bilibili/download`| `cookie` | Bilibili `SESSDATA` — unlocks higher qualities / premium content             |
+
+> Some direct media links are host protected. Pixiv images need `Referer: https://www.pixiv.net/`,
+> Bilibili streams need `Referer: https://www.bilibili.tv`, and Sfile links need the returned
+> cookie plus the original page as referer. Bilibili returns separate DASH video/audio tracks —
+> merge them with ffmpeg. Mega returns an AES-CTR encrypted stream that must be decrypted with the
+> key from the URL fragment.
 
 ---
 
